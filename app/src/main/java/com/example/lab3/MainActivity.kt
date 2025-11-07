@@ -238,7 +238,7 @@ fun WarehouseTab(warehouse: Warehouse) {
                         .clickable { expanded = !expanded }
                         .padding(start = 10.dp, top = 4.dp, bottom = 4.dp)
                 ) {
-                    Text(detail.name, fontSize = 18.sp)
+                    Text(detail.name, fontSize = 16.sp)
 
                     Text(
                         if (expanded) "−" else "+",
@@ -273,7 +273,7 @@ fun WarehouseTab(warehouse: Warehouse) {
                         .clickable { expanded = !expanded }
                         .padding(start = 10.dp, top = 4.dp, bottom = 4.dp)
                 ) {
-                    Text(assembly.name, fontSize = 18.sp)
+                    Text(assembly.name, fontSize = 16.sp)
                     Text(
                         if (expanded) "−" else "+",
                         fontSize = 20.sp,
@@ -311,7 +311,7 @@ fun WarehouseTab(warehouse: Warehouse) {
                         .clickable { expanded = !expanded }
                         .padding(start = 10.dp, top = 4.dp, bottom = 4.dp)
                 ) {
-                    Text(mechanism.name, fontSize = 18.sp)
+                    Text(mechanism.name, fontSize = 16.sp)
 
                     Text(
                         if (expanded) "−" else "+",
