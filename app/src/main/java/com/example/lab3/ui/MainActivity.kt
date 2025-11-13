@@ -1,4 +1,4 @@
-package com.example.lab3
+package com.example.lab3.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,9 +20,10 @@ import com.example.lab3.logic.Assembly
 import com.example.lab3.logic.Mechanism
 import com.example.lab3.ui.theme.Lab3Theme
 import com.example.lab3.logic.Product
+import com.example.lab3.data.DataStorage
 
 
-val warehouses = mutableMapOf<Warehouse, String>()
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,12 +121,12 @@ fun RegisterScreen(onBack: () -> Unit, onRegisterSuccess: (Warehouse) -> Unit) {
                 message = "Заповніть усі поля!"
                 return@Button
             }
-            val exists = warehouses.keys.any { it.name == login }
+            val exists = DataStorage.warehouses.keys.any { it.name == login }
             if (exists) {
                 message = "Такий логін уже існує!"
             } else {
                 val newWh = Warehouse(login)
-                warehouses[newWh] = password
+                DataStorage.warehouses[newWh] = password
                 onRegisterSuccess(newWh)
             }
         }, modifier = Modifier.padding(8.dp)) {
@@ -158,8 +159,8 @@ fun LoginScreen(onBack: () -> Unit, onLoginSuccess: (Warehouse) -> Unit) {
         Text(text = message, color = MaterialTheme.colorScheme.primary)
 
         Button(onClick = {
-            val warehouse = warehouses.keys.find { it.name == login }
-            if (warehouse != null && warehouses[warehouse] == password) {
+            val warehouse = DataStorage.warehouses.keys.find { it.name == login }
+            if (warehouse != null && DataStorage.warehouses[warehouse] == password) {
                 onLoginSuccess(warehouse)
             } else {
                 message = "Неправильний логін або пароль!"
